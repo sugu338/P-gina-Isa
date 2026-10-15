@@ -36,3 +36,9 @@ Esta versión incluye `assets/foto-pareja.jpg` y cambia la caché de la PWA a `v
 Esta versión calcula la ruta de la imagen a partir de la URL de `app.js`, lo que admite repositorios de GitHub Pages publicados en subrutas (`usuario.github.io/repositorio/`). La caché se incrementó a v3 y HTML/JS/CSS usan red primero para facilitar actualizaciones. Si la foto falla, se mostrará la URL exacta que no pudo cargar.
 
 **Importante al subir:** subí los archivos y carpetas sueltos a la raíz publicada, no el ZIP como un solo archivo. Verificá que `assets/foto-pareja.jpg` sea accesible en el sitio.
+
+
+## Versión v4: foto incorporada dentro del código
+Esta versión incorpora la foto directamente en `app.js` como imagen embebida. Así, el rompecabezas ya no depende de que GitHub Pages encuentre `assets/foto-pareja.jpg` en una ruta separada. La carpeta `assets/` se conserva como copia de la foto, pero no es necesaria para que el tablero la muestre.
+
+Para actualizar: subí/reemplazá todos los archivos del ZIP en la raíz publicada del repositorio y esperá a que GitHub Pages termine. Luego cerrá la PWA instalada por completo y abrí la URL del sitio en Chrome. Si Chrome sigue usando la anterior, desinstalá el acceso PWA, borrá los datos del sitio y volvé a abrir la URL. El service worker se actualizó a `v4`.

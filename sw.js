@@ -1,6 +1,6 @@
-const CACHE='aceitunita-pwa-v3';
+const CACHE='aceitunita-pwa-v4';
 const BASE=new URL('./',self.location.href);
-const FILES=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icons/heart.svg','./assets/foto-pareja.jpg'];
+const FILES=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icons/heart.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
