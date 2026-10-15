@@ -26,3 +26,7 @@ Abrí `http://localhost:8080`. Para probar instalación PWA se requiere localhos
 
 ## Nota sobre Android
 Una PWA se puede instalar como app web, pero no puede crear un widget nativo independiente en la pantalla de inicio. El corazón animado vive dentro de la experiencia web y también se puede guardar como SVG animado.
+
+
+## Si antes no aparecía la foto
+Esta versión incluye `assets/foto-pareja.jpg` y cambia la caché de la PWA a `v2`. Después de reemplazar los archivos en GitHub Pages, cerrá la app instalada y abrí el enlace en Chrome. Si todavía aparece la versión anterior, borrá los datos del sitio en Chrome (Configuración del sitio → Almacenamiento → Borrar) y volvé a instalarla.
