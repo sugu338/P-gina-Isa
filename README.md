@@ -30,3 +30,9 @@ Una PWA se puede instalar como app web, pero no puede crear un widget nativo ind
 
 ## Si antes no aparecía la foto
 Esta versión incluye `assets/foto-pareja.jpg` y cambia la caché de la PWA a `v2`. Después de reemplazar los archivos en GitHub Pages, cerrá la app instalada y abrí el enlace en Chrome. Si todavía aparece la versión anterior, borrá los datos del sitio en Chrome (Configuración del sitio → Almacenamiento → Borrar) y volvé a instalarla.
+
+
+## Actualización de diagnóstico v3
+Esta versión calcula la ruta de la imagen a partir de la URL de `app.js`, lo que admite repositorios de GitHub Pages publicados en subrutas (`usuario.github.io/repositorio/`). La caché se incrementó a v3 y HTML/JS/CSS usan red primero para facilitar actualizaciones. Si la foto falla, se mostrará la URL exacta que no pudo cargar.
+
+**Importante al subir:** subí los archivos y carpetas sueltos a la raíz publicada, no el ZIP como un solo archivo. Verificá que `assets/foto-pareja.jpg` sea accesible en el sitio.
