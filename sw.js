@@ -1,4 +1,4 @@
-const CACHE='aceitunita-pwa-v5';
+const CACHE='aceitunita-pwa-v6';
 const BASE=new URL('./',self.location.href);
 const FILES=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icons/heart.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));

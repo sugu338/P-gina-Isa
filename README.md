@@ -42,3 +42,9 @@ Esta versión calcula la ruta de la imagen a partir de la URL de `app.js`, lo qu
 Esta versión incorpora la foto directamente en `app.js` como imagen embebida. Así, el rompecabezas ya no depende de que GitHub Pages encuentre `assets/foto-pareja.jpg` en una ruta separada. La carpeta `assets/` se conserva como copia de la foto, pero no es necesaria para que el tablero la muestre.
 
 Para actualizar: subí/reemplazá todos los archivos del ZIP en la raíz publicada del repositorio y esperá a que GitHub Pages termine. Luego cerrá la PWA instalada por completo y abrí la URL del sitio en Chrome. Si Chrome sigue usando la anterior, desinstalá el acceso PWA, borrá los datos del sitio y volvé a abrir la URL. El service worker se actualizó a `v4`.
+
+
+### Versión 6
+- Rompecabezas simplificado a 3×3 (9 piezas).
+- Al iniciar, muestra la foto original durante aproximadamente 1,8 segundos antes de dejar el rompecabezas a la vista.
+- Caché del service worker actualizada a v6.
