@@ -12,7 +12,7 @@ function show(screen){screens.forEach(s=>s.classList.add('hidden'));screen.class
 function timeText(n){return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');}
 function stopTimer(){if(timer){clearInterval(timer);timer=null;}}
 function neighbors(i){const a=[];const row=Math.floor(i/GRID),col=i%GRID;if(col>0)a.push(i-1);if(col<GRID-1)a.push(i+1);if(row>0)a.push(i-GRID);if(row<GRID-1)a.push(i+GRID);return a;}
-function swap(a,b){[tiles[a],tiles[b]]=[tiles[b],tiles[a]];empty=tiles.indexOf(15);}
+function swap(a,b){[tiles[a],tiles[b]]=[tiles[b],tiles[a]];empty=tiles.indexOf(EMPTY_TILE);}
 function solved(){return tiles.every((v,i)=>v===i);}
 function photoError(message){
  let el=$('photoStatus');
@@ -23,7 +23,7 @@ function render(){
  puzzle.innerHTML='';
  tiles.forEach((v,i)=>{
    const b=document.createElement('button');
-   b.type='button'; b.className='tile'+(v===15?' empty':''); b.dataset.index=i;
+   b.type='button'; b.className='tile'+(v===EMPTY_TILE?' empty':''); b.dataset.index=i;
    b.setAttribute('aria-label',v===EMPTY_TILE?'Espacio vacío':'Pieza '+(v+1));
    if(v!==EMPTY_TILE){
      b.style.backgroundImage=`url("${photoUrl}")`;
@@ -32,7 +32,7 @@ function render(){
    b.addEventListener('click',()=>move(i));
    let sx=0,sy=0,dragging=false;
    b.addEventListener('pointerdown',e=>{
-     if(v===15)return;
+     if(v===EMPTY_TILE)return;
      sx=e.clientX;sy=e.clientY;dragging=true;b.classList.add('dragging');
      try{b.setPointerCapture(e.pointerId)}catch(_){}
    });
@@ -43,7 +43,7 @@ function render(){
      // Dragging a tile toward the empty square should move it only if the swipe direction points at that square.
      let target=-1;
      if(Math.abs(dx)>Math.abs(dy))target=i+(dx>0?1:-1);
-     else target=i+(dy>0?4:-4);
+     else target=i+(dy>0?GRID:-GRID);
      if(target===empty && neighbors(i).includes(empty))move(i);
    });
    b.addEventListener('pointercancel',()=>{dragging=false;b.classList.remove('dragging')});
@@ -62,7 +62,7 @@ function shuffle(){
  for(let n=0;n<90;n++){const opts=neighbors(empty).filter(i=>i!==prev);const pick=opts[Math.floor(Math.random()*opts.length)];prev=empty;swap(pick,empty);}
  if(solved())return shuffle();render();
 }
-function beginGame(showPreview=true){shuffle();show($('game'));if(showPreview){$('previewImg').src=photoUrl;const dialog=$('previewDialog');if(previewTimeout)clearTimeout(previewTimeout);if(!dialog.open)dialog.showModal();previewTimeout=setTimeout(()=>{if(dialog.open)dialog.close();previewTimeout=null;},1800);}}
+function beginGame(showPreview=true){shuffle();show($('game'));if(showPreview){$('previewImg').src=photoUrl;const dialog=$('previewDialog');if(previewTimeout)clearTimeout(previewTimeout);if(!dialog.open)dialog.showModal();previewTimeout=setTimeout(()=>{if(dialog.open)dialog.close();previewTimeout=null;},2200);}}
 $('start').addEventListener('click',()=>beginGame(true));
 $('shuffle').addEventListener('click',shuffle);
 $('preview').addEventListener('click',()=>{$('previewImg').src=photoUrl;$('previewDialog').showModal();});
